@@ -1,28 +1,29 @@
 package tests;
 
 import base.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
+import pages.HomePage;
+import pages.LoginPage;
+import utils.DataProviders;
 
 public class LoginTest extends BaseTest {
-    @BeforeMethod
-    public void setup(){
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
-    @Test
-    public void loginTest(){
-        driver.get("https://automationexercise.com");
-        driver.findElement(By.xpath("//a[contains(text(),'Signup / Login')]")).click();
-    }
-    @AfterMethod
-    public void tearDown(){
-        driver.quit();
+
+    @Test(dataProvider = "loginData", dataProviderClass = DataProviders.class)
+    public void testLogin(String email, String password) {
+
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+
+        homePage.clickSignupLogin();
+        loginPage.login(email, password);
+
+        if(email.equals("ad2208@krce.ac.in")) {
+            Assert.assertTrue(loginPage.isLogoutVisible());
+        } else {
+            Assert.assertTrue(
+                    loginPage.getLoginErrorMessage().contains("incorrect")
+            );
+        }
     }
 }
