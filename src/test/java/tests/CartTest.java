@@ -23,5 +23,7 @@ public class CartTest extends BaseTest {
         Assert.assertTrue(cartPage.isCartDisplayed());
 
         cartPage.removeProduct();
+
+        Assert.assertTrue(cartPage.isCartEmpty());
     }
 }
