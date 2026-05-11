@@ -7,7 +7,7 @@ import pages.CartPage;
 import pages.CheckoutPage;
 import pages.HomePage;
 import pages.LoginPage;
-import pages.ProductPage;
+import pages.ProductsPage;
 
 public class CheckoutTest extends BaseTest {
 
@@ -16,7 +16,7 @@ public class CheckoutTest extends BaseTest {
 
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
-        ProductPage productPage = new ProductPage(driver);
+        ProductsPage productPage = new ProductsPage(driver);
         CartPage cartPage = new CartPage(driver);
         CheckoutPage checkoutPage = new CheckoutPage(driver);
 
@@ -27,8 +27,7 @@ public class CheckoutTest extends BaseTest {
                 "Test@123"
         );
 
-        productPage.openProductPage();
-        productPage.searchProduct("Blue Top");
+        productPage.openProductsPage();
         productPage.addFirstProductToCart();
         productPage.continueShopping();
         productPage.goToCart();
@@ -38,5 +37,13 @@ public class CheckoutTest extends BaseTest {
         checkoutPage.proceedToCheckout();
 
         Assert.assertTrue(checkoutPage.isCheckoutPageDisplayed());
+
+        checkoutPage.enterComment("Hackathon test order");
+        checkoutPage.clickPlaceOrder();
+
+        checkoutPage.enterPaymentDetails();
+        checkoutPage.confirmPayment();
+
+        Assert.assertTrue(checkoutPage.isOrderSuccessful());
     }
 }

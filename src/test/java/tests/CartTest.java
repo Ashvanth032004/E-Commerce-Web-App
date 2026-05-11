@@ -4,18 +4,18 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CartPage;
-import pages.ProductPage;
+import pages.ProductsPage;
 
 public class CartTest extends BaseTest {
 
     @Test
     public void testRemoveProductFromCart() {
 
-        ProductPage productPage = new ProductPage(driver);
+        ProductsPage productPage = new ProductsPage(driver);
         CartPage cartPage = new CartPage(driver);
 
-        productPage.openProductPage();
-        productPage.searchProduct("Blue Top");
+        productPage.openProductsPage();
+
         productPage.addFirstProductToCart();
         productPage.continueShopping();
         productPage.goToCart();
