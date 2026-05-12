@@ -37,7 +37,7 @@ public class CheckoutPage extends BasePage {
             By.id("submit");
 
     private By successMsg =
-            By.xpath("//p[contains(text(),'Order Placed')]");
+            By.xpath("//b[contains(text(),'Order Placed!')]");
 
     public CheckoutPage(WebDriver driver) {
         super(driver);

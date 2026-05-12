@@ -11,7 +11,7 @@ public class ProductsPage extends BasePage {
     private By searchBtn = By.id("submit_search");
 
     private By firstAddToCart = By.xpath("(//a[contains(text(),'Add to cart')])[1]");
-    private By continueShopping = By.xpath("//button[contains(text(),'Continue Shopping')]");
+    private By continueShopping = By.xpath("//button[@data-dismiss='modal']");
     private By cartBtn = By.xpath("//a[contains(text(),'Cart')]");
 
     private By womenCategory = By.xpath("//a[@href='#Women']");
