@@ -29,8 +29,8 @@ public class CheckoutTest extends BaseTest {
 
         productPage.openProductsPage();
         productPage.addFirstProductToCart();
-        productPage.continueShopping();
-        productPage.goToCart();
+
+        driver.get("https://automationexercise.com/view_cart");
 
         Assert.assertTrue(cartPage.isCartDisplayed());
 

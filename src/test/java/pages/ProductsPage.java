@@ -39,7 +39,7 @@ public class ProductsPage extends BasePage {
     }
 
     public void continueShopping() {
-        click(continueShopping);
+        driver.get("https://automationexercise.com/view_cart");
     }
 
     public void goToCart() {

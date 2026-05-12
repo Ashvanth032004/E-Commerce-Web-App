@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class CartPage extends BasePage {
 
-    private By cartTable = By.id("cart_info");
+    private By cartTable = By.id("cart_info_table");
     private By removeBtn = By.className("cart_quantity_delete");
     private By emptyCartMessage = By.xpath("//b[contains(text(),'Cart is empty')]");
 

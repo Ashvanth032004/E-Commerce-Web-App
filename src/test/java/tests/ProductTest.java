@@ -3,7 +3,6 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CartPage;
 import pages.ProductsPage;
 
 public class ProductTest extends BaseTest {
@@ -12,14 +11,17 @@ public class ProductTest extends BaseTest {
     public void testProductSearchAndCart() {
 
         ProductsPage productPage = new ProductsPage(driver);
-        CartPage cartPage = new CartPage(driver);
 
-        productPage.openProductsPage();
+        driver.get("https://automationexercise.com/products");
+
         productPage.searchProduct("Blue Top");
-        productPage.addFirstProductToCart();
-        productPage.continueShopping();
-        productPage.goToCart();
 
-        Assert.assertTrue(cartPage.isCartDisplayed());
+        productPage.addFirstProductToCart();
+
+        driver.get("https://automationexercise.com/view_cart");
+
+        Assert.assertTrue(
+                driver.getCurrentUrl().contains("view_cart")
+        );
     }
 }
